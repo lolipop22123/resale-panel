@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}Настройка аккаунтов{% endblock %}
+{% block header_title %}Управление игровыми аккаунтами{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card p-4 shadow-sm">
+            <h5 class="fw-bold mb-4">Добавить новый аккаунт</h5>
+            
+            <form>
+                <!-- 2.1 Выбор площадки -->
+                <div class="mb-4">
+                    <label class="form-label text-muted small fw-bold mb-3">1. ВЫБЕРИТЕ ПЛОЩАДКУ</label>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <input type="radio" name="platform" id="g2g" value="g2g" checked>
+                            <label class="card platform-card h-100" for="g2g">
+                                <i class="fa-solid fa-gamepad text-primary"></i>
+                                <div class="fw-bold">G2G.com</div>
+                                <div class="small text-muted">Global Market</div>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="radio" name="platform" id="u7buy" value="u7buy">
+                            <label class="card platform-card h-100" for="u7buy">
+                                <i class="fa-solid fa-coins text-warning"></i>
+                                <div class="fw-bold">U7BUY</div>
+                                <div class="small text-muted">Gaming Service</div>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="radio" name="platform" id="other" value="other">
+                            <label class="card platform-card h-100" for="other">
+                                <i class="fa-solid fa-plus-circle text-secondary"></i>
+                                <div class="fw-bold">Другое</div>
+                                <div class="small text-muted">Свой скрипт</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.2 Подключения аккаунтов -->
+                <div class="mb-4">
+                    <label class="form-label text-muted small fw-bold mb-3">2. ДАННЫЕ АВТОРИЗАЦИИ</label>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="acc_login" placeholder="Email / Username">
+                                <label for="acc_login">Email или Логин</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="acc_pass" placeholder="Password">
+                                <label for="acc_pass">Пароль</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="acc_token" placeholder="API Token (Optional)">
+                                <label for="acc_token">API Токен (если требуется)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.3 Прокси для аккаунта -->
+                <div class="mb-4">
+                    <label class="form-label text-muted small fw-bold mb-3">3. НАСТРОЙКА ПРОКСИ</label>
+                    <ul class="nav nav-pills mb-3 bg-body-secondary p-1 rounded-pill w-auto d-inline-flex" id="proxyTabs">
+                        <li class="nav-item">
+                            <button class="nav-link active rounded-pill px-4" data-bs-toggle="tab" data-bs-target="#proxy-list" type="button">Списком</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link rounded-pill px-4" data-bs-toggle="tab" data-bs-target="#proxy-file" type="button">Файлом</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="proxy-list">
+                            <textarea class="form-control font-monospace" rows="4" placeholder="ip:port:user:pass"></textarea>
+                            <div class="form-text mt-2 small">Введите данные прокси, каждый с новой строки.</div>
+                        </div>
+                        <div class="tab-pane fade" id="proxy-file">
+                            <div class="p-4 border-2 border-dashed rounded text-center bg-body-secondary">
+                                <i class="fa-solid fa-file-import fa-2x text-primary mb-2"></i>
+                                <p class="mb-0 fw-medium">Выберите файл .txt с прокси</p>
+                                <input type="file" class="form-control mt-3 form-control-sm w-50 mx-auto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 justify-content-end align-items-center mt-5">
+                    <button type="button" class="btn btn-link text-decoration-none fw-medium">Очистить</button>
+                    <button type="button" class="btn btn-outline-primary px-4 rounded-pill fw-bold">Проверить</button>
+                    <button type="submit" class="btn btn-primary px-5 rounded-pill shadow fw-bold">Добавить аккаунт</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card h-100 p-4 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold mb-0">Активные сессии</h5>
+                <span class="badge bg-primary-subtle text-primary rounded-pill px-3">0</span>
+            </div>
+            <div class="text-center py-5">
+                <div class="mb-3">
+                    <i class="fa-solid fa-ghost fa-3x text-body-tertiary opacity-50"></i>
+                </div>
+                <p class="text-muted small">Список пуст. Добавьте свой первый аккаунт G2G или U7BUY слева.</p>
+                <hr class="my-4 opacity-10">
+                <div class="text-start">
+                    <h6 class="small fw-bold text-uppercase text-muted mb-3">Помощь</h6>
+                    <div class="d-flex align-items-center mb-2 small text-primary">
+                        <i class="fa-solid fa-circle-question me-2"></i>
+                        <a href="#" class="text-decoration-none">Как привязать G2G?</a>
+                    </div>
+                    <div class="d-flex align-items-center small text-primary">
+                        <i class="fa-solid fa-shield-halved me-2"></i>
+                        <a href="#" class="text-decoration-none">Безопасность прокси</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

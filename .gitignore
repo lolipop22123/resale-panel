@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+ENV/
+env/
+.env
+
+# Database
+data/*.sqlite
+data/*.db
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Static
+panel/static/css/style.css.map
