@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
-{% block header_title %}Главная страница{% endblock %}
+{% block header_title %}
+    <div class="d-flex align-items-center">
+        <span>Главная страница</span>
+        <span class="mx-2 text-muted opacity-50">|</span>
+        <span class="fs-6 fw-normal text-muted">Добро пожаловать, <span class="text-primary fw-bold">{{ session.get('user_id') }}</span>!</span>
+    </div>
+{% endblock %}
 
 {% block content %}
 <div class="row g-4">
